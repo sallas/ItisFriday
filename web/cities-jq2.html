@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-2.1.1.js"></script>
+    <script>
+      function doAjax() {
+        var region = this.value;
+        $("#target").load("Cities?region="+region);
+        }
+        
+      function init() {
+        $("button.Region").click(doAjax);
+        }
+        
+      $(init);
+    </script>
+  </head>
+  <body>
+    <div class="Eco">Cities of Denmark</div>
+    <hr/>
+    <button value="J" class="Eco Region">Jutland</button>
+    <button value="F" class="Region">Funen</button>
+    <button value="S">Zealand</button>
+    <hr/>
+    <select name="city" id="target"></select>
+  </body>
+</html>

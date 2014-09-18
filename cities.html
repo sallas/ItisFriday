@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      function doAjax(region) {
+        var target = document.getElementById("target");
+        var ajax = new XMLHttpRequest();
+        ajax.open("GET", "Cities?region="+region, false);
+        ajax.onreadystatechange = function() {
+          if (ajax.readyState === 4) {
+            if (ajax.status === 200) {
+              target.innerHTML = ajax.responseText;
+              //alert(">>"+ajax.responseText); // 'This is the returned text.'
+              }
+            else {
+              alert('Error: '+ajax.status); // An error occurred during the request
+              }
+            }
+          };
+        ajax.send();
+        }
+    </script>
+  </head>
+  <body>
+    <div>Cities of Denmark</div>
+    <hr/>
+    <button onclick="doAjax('J');">Jutland</button>
+    <button onclick="doAjax('F');">Funen</button>
+    <button onclick="doAjax('S');">Zealand</button>
+    <hr/>
+    <select id="target"></select>
+  </body>
+</html>

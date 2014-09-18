@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>
+            $(function () {
+                if (Date()[0] === "F") {
+                    $("#target").html("It's friday, gimme a second to see what events exists in your area");
+                    var country;
+                    $.ajax({
+                        url: '//freegeoip.net/json/',
+                        type: 'POST',
+                        dataType: 'jsonp',
+                        success: function (location) {
+                            country = location.country_name;
+                            $.ajax({
+                                url: "Cities?country=" + country,
+                                method: "GET"
+                            }).done(function (data) {
+                                $("#target").html(data);
+                            });
+                        }
+                    });
+                } else {
+                    $("#target").html("It aint friday yet");
+                }
+            });
+        </script>
+    </head>
+    <body>
+        <div id="target"></div>
+    </body>
+</html>

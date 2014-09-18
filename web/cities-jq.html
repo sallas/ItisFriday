@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-2.1.1.js"></script>
+    <script>
+      function doAjax(region) {
+//        $.ajax({
+//          url: "Cities?region="+region,
+//          method: "GET"
+//          })
+//          .done(function(data) {
+//            $("#target").html(data);
+//            });
+//        }
+        
+        $("#target").load("Cities?region="+region);
+        }
+//        var target = document.getElementById("target");
+//        var ajax = new XMLHttpRequest();
+//        ajax.open("GET", "Cities?region="+region, false);
+//        ajax.onreadystatechange = function() {
+//          if (ajax.readyState === 4) {
+//            if (ajax.status === 200) {
+//              target.innerHTML = ajax.responseText;
+//              //alert(">>"+ajax.responseText); // 'This is the returned text.'
+//              }
+//            else {
+//              alert('Error: '+ajax.status); // An error occurred during the request
+//              }
+//            }
+//          };
+//        ajax.send();
+//        }
+    function allButtonsRed() {
+      $("button").css({color: "red", backgroundColor: "yellow"});
+      }
+      
+    $(allButtonsRed);
+    // window.addEventListener("load", allButtonsRed, false);
+    </script>
+  </head>
+  <body>
+    <div class="Eco">Cities of Denmark</div>
+    <hr/>
+    <button class="Eco" onclick="doAjax('J');">Jutland</button>
+    <button onclick="doAjax('F');">Funen</button>
+    <button onclick="doAjax('S');">Zealand</button>
+    <hr/>
+    <select name="city" id="target"></select>
+  </body>
+</html>
